@@ -81,8 +81,7 @@
                     showZoomer: zoomSlider,
                     enableExif: scope.exif,
                     enforceBoundary: scope.enforceBoundary,
-                    enableOrientation: scope.orientation,
-                    url: scope.src
+                    enableOrientation: scope.orientation
                 };
 
                 if (typeof scope.update !== 'undefined') {
@@ -167,9 +166,7 @@
 
                 // respond to changes in src
                 scope.$watch('src', function(newValue, oldValue) {
-                    if (!scope.src) {
-                        // throw 'ngCroppie: Image source undefined!'
-                    } else {
+                    if (scope.src) {
                         c.bind(scope.src);
                         window.setInterval(function() {  // force delay for the ng-file-upload
                             c.result('canvas').then(function(img) {
