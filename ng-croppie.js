@@ -1,12 +1,12 @@
 /*!
- *	 Angular Croppie Tool (ngCroppie)
- *	 An awesome image cropping and rotating module for AngularJS.
+ *   Angular Croppie Tool (ngCroppie)
+ *   An awesome image cropping and rotating module for AngularJS.
  *
- *	 Credits: https://github.com/allenRoyston/ngCroppie/graphs/contributors
- *	 Inspired by Croppie.js https://github.com/Foliotek/Croppie
+ *   Credits: https://github.com/allenRoyston/ngCroppie/graphs/contributors
+ *   Inspired by Croppie.js https://github.com/Foliotek/Croppie
  *
- *	 Version: 1.2.2
- * 	 License: MIT
+ *   Version: 1.2.2
+ *    License: MIT
  */
 (function () {
     'use strict';
@@ -81,7 +81,8 @@
                     showZoomer: zoomSlider,
                     enableExif: scope.exif,
                     enforceBoundary: scope.enforceBoundary,
-                    enableOrientation: scope.orientation
+                    enableOrientation: scope.orientation,
+                    url: scope.src
                 };
 
                 if (typeof scope.update !== 'undefined') {
@@ -166,8 +167,8 @@
 
                 // respond to changes in src
                 scope.$watch('src', function(newValue, oldValue) {
-                    if (typeof scope.src === 'undefined') {
-                        throw 'ngCroppie: Image source undefined!'
+                    if (!scope.src) {
+                        // throw 'ngCroppie: Image source undefined!'
                     } else {
                         c.bind(scope.src);
                         window.setInterval(function() {  // force delay for the ng-file-upload
